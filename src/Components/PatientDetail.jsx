@@ -23,7 +23,7 @@ const PatientDetails = memo(({ patient }) => {
           <p>
             <strong className="flex items-center">
               <span>
-                <img src="public/BirthIcon.svg" alt="Birth Icon" />
+                <img src="./assets/BirthIcon.svg" alt="Birth Icon" />
               </span>
               Date of Birth:
             </strong>
