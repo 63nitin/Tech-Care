@@ -37,8 +37,8 @@ const PatientDetails = memo(({ patient }) => {
                 <img
                   src={
                     patient.gender === "Male"
-                      ? "public/assets/MaleIcon.svg"
-                      : "public/assets/FemaleIcon.svg"
+                      ? "./assets/MaleIcon.svg"
+                      : "./assets/FemaleIcon.svg"
                   }
                   alt={patient.gender === "Male" ? "Male Icon" : "Female Icon"}
                 />
@@ -52,7 +52,7 @@ const PatientDetails = memo(({ patient }) => {
           <p>
             <strong className="flex items-center">
               <span>
-                <img src="public/assets/PhoneIcon.svg" alt="Birth Icon" />
+                <img src="./assets/PhoneIcon.svg" alt="Birth Icon" />
               </span>
               Phone Number:
             </strong>
@@ -63,7 +63,7 @@ const PatientDetails = memo(({ patient }) => {
           <p>
             <strong className="flex items-center">
               <span>
-                <img src="public/assets/PhoneIcon.svg" alt="Birth Icon" />
+                <img src="./assets/PhoneIcon.svg" alt="Birth Icon" />
               </span>
               Emergency Contact :
             </strong>
@@ -74,7 +74,7 @@ const PatientDetails = memo(({ patient }) => {
            <p>
             <strong className="flex items-center">
               <span>
-                <img src="public/assets/InsuranceIcon.svg" alt="Birth Icon" />
+                <img src="./assets/InsuranceIcon.svg" alt="Birth Icon" />
               </span>
               Insurance Provider :
             </strong>
