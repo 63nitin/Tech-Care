@@ -1,85 +1,98 @@
 import React from "react";
-import DiagnosisChart from "./Chart.jsx";
 import { memo } from "react";
 
 const PatientDetails = memo(({ patient }) => {
-  console.log(patient);
+  if (!patient) return null;
+
   return (
-    <div>
-      <div className="p-2 bg-white rounded-lg absolute right-36 shadow-md">
-        <div className=" items-center space-x-4 mb-1">
-          <img
-            src={patient.profile_picture}
-            alt={patient.name}
-            className="w-20 h-20  rounded-full object-cover"
-          />
-          <div>
-            <h2 className=" font-bold">{patient.name}</h2>
+    <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mb-6">
+        <img
+          src={patient.profile_picture}
+          alt={patient.name}
+          className="w-24 h-24 rounded-full object-cover border-4 border-blue-100"
+        />
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-1">{patient.name}</h2>
+          <p className="text-gray-600">Patient ID: {patient.id || "N/A"}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-4">
+          {/* Date of Birth */}
+          <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div className="p-2 bg-white rounded-full shadow-sm">
+              <img src="./assets/BirthIcon.svg" alt="Birth Icon" className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Date of Birth</p>
+              <p className="font-medium text-gray-900">{patient.date_of_birth || "N/A"}</p>
+            </div>
+          </div>
+
+          {/* Gender */}
+          <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div className="p-2 bg-white rounded-full shadow-sm">
+              <img
+                src={patient.gender === "Male" ? "./assets/MaleIcon.svg" : "./assets/FemaleIcon.svg"}
+                alt={`${patient.gender} Icon`}
+                className="w-5 h-5"
+              />
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Gender</p>
+              <p className="font-medium text-gray-900">{patient.gender || "N/A"}</p>
+            </div>
+          </div>
+
+          {/* Phone Number */}
+          <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div className="p-2 bg-white rounded-full shadow-sm">
+              <img src="./assets/PhoneIcon.svg" alt="Phone Icon" className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Phone Number</p>
+              <p className="font-medium text-gray-900">{patient.phone_number || "N/A"}</p>
+            </div>
           </div>
         </div>
-        <div>
 
-          {/* // Date of Birth */}
-          <p>
-            <strong className="flex items-center">
-              <span>
-                <img src="./assets/BirthIcon.svg" alt="Birth Icon" />
-              </span>
-              Date of Birth:
-            </strong>
-            <span className="ml-6">{patient.date_of_birth || "N/A"}</span>
-          </p>
-
-         {/* // Gender */}
-          <p>
-            <strong className="flex items-center">
-              <span>
-                <img
-                  src={
-                    patient.gender === "Male"
-                      ? "./assets/MaleIcon.svg"
-                      : "./assets/FemaleIcon.svg"
-                  }
-                  alt={patient.gender === "Male" ? "Male Icon" : "Female Icon"}
-                />
-              </span>
-              Gender:
-            </strong>{" "}
-            <span className="ml-6">{patient.gender || "N/A"}</span>
-          </p>
-
-          {/* // Phone_Number */}
-          <p>
-            <strong className="flex items-center">
-              <span>
-                <img src="./assets/PhoneIcon.svg" alt="Birth Icon" />
-              </span>
-              Phone Number:
-            </strong>
-            <span className="ml-6">{patient.phone_number || "N/A"}</span>
-          </p>
-
+        <div className="space-y-4">
           {/* Emergency Contact */}
-          <p>
-            <strong className="flex items-center">
-              <span>
-                <img src="./assets/PhoneIcon.svg" alt="Birth Icon" />
-              </span>
-              Emergency Contact :
-            </strong>
-            <span className="ml-6">{patient.emergency_contact || "N/A"}</span>
-          </p>
-           
-           {/* Insurance provider */}
-           <p>
-            <strong className="flex items-center">
-              <span>
-                <img src="./assets/InsuranceIcon.svg" alt="Birth Icon" />
-              </span>
-              Insurance Provider :
-            </strong>
-            <span className="ml-6">{patient.insurance_type|| "N/A"}</span>
-          </p>
+          <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div className="p-2 bg-white rounded-full shadow-sm">
+              <img src="./assets/PhoneIcon.svg" alt="Emergency Contact Icon" className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Emergency Contact</p>
+              <p className="font-medium text-gray-900">{patient.emergency_contact || "N/A"}</p>
+            </div>
+          </div>
+
+          {/* Insurance Provider */}
+          <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div className="p-2 bg-white rounded-full shadow-sm">
+              <img src="./assets/InsuranceIcon.svg" alt="Insurance Icon" className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Insurance Provider</p>
+              <p className="font-medium text-gray-900">{patient.insurance_type || "N/A"}</p>
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div className="p-2 bg-white rounded-full shadow-sm">
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Last Visit</p>
+              <p className="font-medium text-gray-900">{patient.last_visit || "N/A"}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
